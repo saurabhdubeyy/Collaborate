@@ -1,0 +1,39 @@
+# Enable mod_rewrite
+RewriteEngine On
+
+# Set the base directory
+RewriteBase /
+
+# Redirect all non-file/directory requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
+
+# PHP error handling
+php_flag display_startup_errors on
+php_flag display_errors on
+php_flag html_errors on
+php_value error_reporting E_ALL
+
+# Set default character set
+AddDefaultCharset UTF-8
+
+# Prevent directory listing
+Options -Indexes
+
+# Enhanced security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Enable file access control
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Disable server signature
+ServerSignature Off 

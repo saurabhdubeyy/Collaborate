@@ -6,14 +6,28 @@ session_start();
 if(isset($_POST['submit'])){
 
    $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
+   $pass = $_POST['password']; // Plain password from form
 
-   $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE email = '$email' AND password = '$pass'") or die('query failed');
+   $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE email = '$email'") or die('query failed');
 
    if(mysqli_num_rows($select) > 0){
       $row = mysqli_fetch_assoc($select);
-      $_SESSION['user_id'] = $row['id'];
-      header('location:home.php');
+      // Check if old MD5 password exists (for backward compatibility)
+      if($row['password'] == md5($pass)){
+         // Update to new password hash for better security
+         $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
+         mysqli_query($conn, "UPDATE `user_form` SET password = '$hashed_password' WHERE id = '{$row['id']}'");
+         $_SESSION['user_id'] = $row['id'];
+         header('location:home.php');
+      }
+      // Check if password matches using modern hashing
+      else if(password_verify($pass, $row['password'])){
+         $_SESSION['user_id'] = $row['id'];
+         header('location:home.php');
+      }
+      else{
+         $message[] = 'incorrect email or password!';
+      }
    }else{
       $message[] = 'incorrect email or password!';
    }

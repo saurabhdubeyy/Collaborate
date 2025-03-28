@@ -1,8 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
   margin: 0;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* CSS for header */
@@ -11,136 +19,152 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #f5f5f5;
+  padding: 15px 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .header .logo {
-  font-size: 25px;
-  font-family: "fantasy";
+  font-size: 24px;
+  font-weight: bold;
   color: #000;
   text-decoration: none;
-  margin-left: 30px;
 }
 
 .nav-items {
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  background-color: #f5f5f5;
-  margin-right: 20px;
 }
 
 .nav-items a {
-  text-decoration: solid;
-  color: #000;
-  padding: 7px 25px;;
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
-/* CSS for main element */
+.nav-items a:hover {
+  color: #4a90e2;
+}
+
+/* CSS for main section */
 .intro {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 650px;
-  background: linear-gradient(to bottom, rgb(0 0 0 / 70%) 5%, rgb(0 0 0 / 70%) 5%), url("image/img1.jpeg");
+  height: 520px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("image/img1.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  text-align: center;
 }
 
 .intro h1 {
-  font-family: sans-serif;
   font-size: 60px;
   color: #fff;
   font-weight: bold;
-  text-transform: none;
-  margin: 0;
+  margin-bottom: 20px;
 }
-
 
 .intro p {
   font-size: 20px;
-  color: #d1d1d1;
-  text-transform: none;
-  margin: 20px 0;
+  color: #fff;
+  max-width: 800px;
 }
 
 .intro button {
-  background-color: #e82d2d;
-  color: #000;
+  background-color: #4a90e2;
+  color: #fff;
   padding: 10px 25px;
   border: none;
-  border-radius: 10px;
-  font-size: 20px;
+  border-radius: 5px;
+  font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4)
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  margin-top: 20px;
 }
 
 .achievements {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 40px 80px;
+  padding: 60px 50px;
+  background-color: #f8f9fa;
 }
 
-.achievements .work {
+.work {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 40px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  width: 30%;
 }
 
-.achievements .work i {
-  width: fit-content;
-  font-size: 50px;
-  color: #333333;
-  border-radius: 50%;
-  border: 2px solid #333333;
-  padding: 12px;
+.work:hover {
+  transform: translateY(-5px);
 }
 
-.achievements .work .work-heading {
-  font-size: 20px;
-  color: #333333;
-  text-transform: uppercase;
-  margin: 10px 0;
+.work i {
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  color: #4a90e2;
+  margin-bottom: 15px;
 }
 
-.achievements .work .work-text {
-  font-size: 15px;
-  color: #585858;
-  margin: 10px 0;
+.work-heading {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.work-text {
+  font-size: 16px;
+  color: #777;
+  text-align: center;
 }
 
 .about-me {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 80px;
-  border-top: 2px solid #eeeeee;
+  background-color: #fff;
+  padding: 80px 50px;
 }
 
 .about-me img {
-  width: 300px;
+  width: 500px;
   max-width: 100%;
   height: auto;
-  border-radius: 15px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.about-me-text h2 {
-  font-size: 30px;
-  color: #333333;
-  text-transform: uppercase;
-  margin: 0;
+.about-me-text {
+  max-width: 500px;
+  margin-right: 50px;
+}
+
+.about-me-text h1 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .about-me-text p {
-  font-size: 15px;
-  color: #585858;
-  margin: 10px 0;
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
 }
 
 /* CSS for footer */
@@ -148,38 +172,150 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #302f49;
-  padding: 40px 80px;
+  padding: 40px 50px;
+  background-color: #333;
+  color: #fff;
 }
 
 .footer .copy {
-  color: #fff;
+  font-size: 16px;
 }
 
 .bottom-links {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  padding: 40px 0;
+  padding: 20px 0;
 }
 
 .bottom-links .links {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 40px;
+  margin-right: 50px;
 }
 
 .bottom-links .links span {
-  font-size: 20px;
+  font-size: 18px;
+  margin-bottom: 10px;
   color: #fff;
-  text-transform: uppercase;
-  margin: 10px 0;
 }
 
 .bottom-links .links a {
+  font-size: 16px;
+  color: #ccc;
   text-decoration: none;
-  color: #a1a1a1;
+  margin-bottom: 5px;
+  transition: color 0.3s;
+}
+
+.bottom-links .links a:hover {
+  color: #4a90e2;
+}
+
+/* Common button style */
+.btn {
+  display: inline-block;
   padding: 10px 20px;
+  background-color: #4a90e2;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #3a7bc8;
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 1024px) {
+  .intro h1 {
+    font-size: 45px;
+  }
+  
+  .intro p {
+    font-size: 18px;
+  }
+  
+  .achievements {
+    padding: 40px 20px;
+    flex-wrap: wrap;
+  }
+  
+  .work {
+    width: 45%;
+    margin-bottom: 30px;
+  }
+  
+  .about-me {
+    flex-direction: column;
+    padding: 50px 20px;
+  }
+  
+  .about-me-text {
+    margin-right: 0;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .header .logo {
+    margin-bottom: 15px;
+  }
+  
+  .nav-items {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-items a {
+    margin: 5px 10px;
+  }
+  
+  .intro {
+    height: 450px;
+  }
+  
+  .intro h1 {
+    font-size: 35px;
+  }
+  
+  .intro p {
+    font-size: 16px;
+    padding: 0 15px;
+  }
+  
+  .work {
+    width: 100%;
+  }
+  
+  .about-me img {
+    width: 100%;
+  }
+  
+  .footer {
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .footer .copy {
+    margin-bottom: 20px;
+  }
+  
+  .bottom-links {
+    flex-direction: column;
+  }
+  
+  .bottom-links .links {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 }
