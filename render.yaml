@@ -2,7 +2,7 @@ services:
   - type: web
     name: collaborate
     env: docker
-    repo: https://github.com/yourusername/collaborate.git # Update this with your GitHub repo
+    repo: https://github.com/saurabhdubeyy/Collaborate.git # Updated with correct repository
     region: ohio
     plan: free
     branch: main
@@ -10,13 +10,23 @@ services:
     dockerContext: .
     envVars:
       - key: DB_HOST
-        value: dpg-your-postgres-host # You'll get this from Render
+        fromDatabase:
+          name: collaborate-db
+          property: host
       - key: DB_NAME
-        value: collaborate_db
+        fromDatabase:
+          name: collaborate-db
+          property: database
       - key: DB_USER
-        value: postgres
+        fromDatabase:
+          name: collaborate-db
+          property: user
       - key: DB_PASSWORD
-        sync: false # This will be set manually in the Render dashboard
+        fromDatabase:
+          name: collaborate-db
+          property: password
+      - key: APP_ENV
+        value: production
     domains:
       - collaborate-app.onrender.com # This will be assigned by Render
 
