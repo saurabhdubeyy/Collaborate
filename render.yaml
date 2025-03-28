@@ -2,37 +2,41 @@ services:
   - type: web
     name: collaborate
     env: docker
-    repo: https://github.com/saurabhdubeyy/Collaborate.git # Updated with correct repository
+    repo: https://github.com/saurabhdubeyy/Collaborate.git
     region: ohio
     plan: free
     branch: main
     dockerfilePath: ./Dockerfile
     dockerContext: .
     envVars:
-      - key: DB_HOST
+      - key: APP_ENV
+        value: production
+      # Using Render's internal env vars for PostgreSQL database
+      - key: PGHOST
         fromDatabase:
           name: collaborate-db
           property: host
-      - key: DB_NAME
+      - key: PGDATABASE
         fromDatabase:
           name: collaborate-db
           property: database
-      - key: DB_USER
+      - key: PGUSER
         fromDatabase:
           name: collaborate-db
           property: user
-      - key: DB_PASSWORD
+      - key: PGPASSWORD
         fromDatabase:
           name: collaborate-db
           property: password
-      - key: APP_ENV
-        value: production
+      - key: PGPORT
+        fromDatabase:
+          name: collaborate-db
+          property: port
     domains:
-      - collaborate-app.onrender.com # This will be assigned by Render
+      - collaborate-app.onrender.com
 
 databases:
   - name: collaborate-db
     plan: free
     region: ohio
-    databaseName: collaborate_db
-    user: postgres 
+    databaseName: collaborate_db 

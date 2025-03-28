@@ -4,10 +4,13 @@ RewriteEngine On
 # Set the base directory
 RewriteBase /
 
-# Redirect all non-file/directory requests to index.php
+# Redirect all /dashboard/* requests to the root
+RewriteRule ^dashboard/(.*)$ /$1 [R=301,L]
+
+# Handle requests for files and directories
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [L]
+RewriteRule . /index.php [L]
 
 # PHP error handling
 php_flag display_startup_errors on
@@ -36,4 +39,9 @@ Options -Indexes
 </FilesMatch>
 
 # Disable server signature
-ServerSignature Off 
+ServerSignature Off
+
+# PHP settings
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+php_value memory_limit 256M 
