@@ -1,0 +1,37 @@
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+vendor/
+node_modules/
+
+# Build artifacts
+/dist
+/build
+
+# Cache files
+*.cache
+
+# Local configuration files
+config.local.php
+
+# Uploaded files and images that should be created on deployment
+/uploaded_img/*
+!/uploaded_img/.gitkeep
+/images/*
+!/images/.gitkeep 
