@@ -24,6 +24,12 @@ AddDefaultCharset UTF-8
 # Prevent directory listing
 Options -Indexes
 
+# Ensure PHP files are parsed properly
+AddType application/x-httpd-php .php
+<FilesMatch "\.php$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
 # Enhanced security headers
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
@@ -44,4 +50,7 @@ ServerSignature Off
 # PHP settings
 php_value upload_max_filesize 10M
 php_value post_max_size 10M
-php_value memory_limit 256M 
+php_value memory_limit 256M
+
+# Error document
+ErrorDocument 404 /index.php 
